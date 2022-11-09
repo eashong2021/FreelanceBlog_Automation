@@ -2,7 +2,7 @@ describe('explores the frewelance blog page', () => {
 
   it('opens the blog page', () => {
     cy.visit('localhost:3000')
-    cy.get('[data-cy="thefairwork_logo"]').should('be.visible')
+    cy.get('[data-cy="thefairwork_logo"]').should('contains.text', 'fairwork')
     cy.get('[href="https://www.thefairwork.com/about-us"] > p').should('be.visible')
     cy.get('[href="https://www.thefairwork.com/signup-options"] > p').contains('Sign Up')
     cy.get('[href="https://www.thefairwork.com/login"] > p').contains('Login')
@@ -25,6 +25,9 @@ describe('explores the frewelance blog page', () => {
     cy.get('.container > .MuiGrid-container > :nth-child(1) > #cardMain > .MuiCardContent-root > .MuiButtonBase-root > .MuiButton-label').should('have.text', 'READ MORE').should('be.visible').click()
     cy.get('h2').should('be.visible')
     cy.get('.ArticleDetails_image__d3PUU').should('be.visible')
+    cy.wait(2000)
+    cy.go('back')
+    
   })
 
   it("has pagination including Previous and next", () => {
@@ -55,11 +58,12 @@ it('displays various links in the footer', () => {
     cy.get('[data-cy="ContactUs"]').should('have.text', 'Contact Us')
 
 })
+
 it('has social media links like Facebook and Linkedin', () => {
   cy.get('[data-cy="followUs"]').should('have.text', 'Follow Us:')
-  cy.get('[ data-cy="LinkedIn"]')//.click()
-  cy.get('[ data-cy="Facebook"]')//.click()
- //cy.get('[data-cy="copyRightMsg"]', {timeout:10000})
- // .should('include', ' &copy; Copyright {new Date().getFullYear()} TheFairWork. All Rights Reserved.')
+   cy.get('[ data-cy="LinkedIn"]')
+   cy.get('[ data-cy="Facebook"]')
+   cy.get('[data-cy="copyRightMsg"]')   
+ .should('have.text',  '© Copyright 2022 TheFairWork. All Rights Reserved.')
 })
 })
