@@ -24,12 +24,11 @@ describe('explores the frewelance blog page', () => {
   })
 
   it("has pagination including Previous and next", () => {
-    //cy.visit('localhost:3000')
     cy.get(':nth-child(1) > [data-cy="paging pre-next"]').should('be.visible').click()
     cy.get(':nth-child(2) > [data-cy="paging p"]').should('be.visible').click()
-    cy.get('.Pagination_pagination__ShHE2 > :nth-child(3) > p').should('be.visible').click()
-    cy.get(':nth-child(8) > [data-cy="paging p"]').should('be.visible').click()
-    cy.get(':nth-child(9) > [data-cy="paging pre-next"]').should('be.visible').click() 
+   // cy.get('.Pagination_pagination__ShHE2 > :nth-child(3) > p').should('be.visible').click()
+   // cy.get(':nth-child(8) > [data-cy="paging p"]').should('be.visible').click()
+  //  cy.get(':nth-child(9) > [data-cy="paging pre-next"]').should('be.visible').click() 
 })
 
 it('has most read articles section', () => {
