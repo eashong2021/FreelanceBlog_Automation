@@ -3,6 +3,9 @@ describe('explores the frewelance blog page', () => {
   it('opens the blog page', () => {
     cy.visit('localhost:3000')
     cy.get('[data-cy="thefairwork_logo"]').should('be.visible')
+    cy.get('[href="https://www.thefairwork.com/about-us"] > p').should('be.visible')
+    cy.get('[href="https://www.thefairwork.com/signup-options"] > p').contains('Sign Up')
+    cy.get('[href="https://www.thefairwork.com/login"] > p').contains('Login')
     cy.get('[data-cy="mainBanner"]').contains('TheFairWork Blog').should('be.visible')
     cy.get('.Banner_description__Fd_42')
     .contains('Explore new technologies, industry insights, stories of success, tools, and inspiration about the future of tech talent and the new world of work')
@@ -27,9 +30,9 @@ describe('explores the frewelance blog page', () => {
   it("has pagination including Previous and next", () => {
     cy.get(':nth-child(1) > [data-cy="paging pre-next"]').should('be.visible').click()
     cy.get(':nth-child(2) > [data-cy="paging p"]').should('be.visible').click()
-   // cy.get('.Pagination_pagination__ShHE2 > :nth-child(3) > p').should('be.visible').click()
-   // cy.get(':nth-child(8) > [data-cy="paging p"]').should('be.visible').click()
-  //  cy.get(':nth-child(9) > [data-cy="paging pre-next"]').should('be.visible').click() 
+    cy.get('.Pagination_pagination__ShHE2 > :nth-child(3) > p').should('be.visible').click()
+    cy.get(':nth-child(8) > [data-cy="paging p"]').should('be.visible').click()
+    cy.get(':nth-child(9) > [data-cy="paging pre-next"]').should('be.visible').click() 
 })
 
 it('has most read articles section', () => {
@@ -46,10 +49,10 @@ it('displays various links in the footer', () => {
     cy.get('[data-cy="AmalitechBigiskillT"]').should('have.text', 'AmaliTech Digital Skills Training')
     cy.get('[data-cy="AmalitechCompany"]').should('have.text', 'Company')
     cy.get('[data-cy="AboutTheFairWork"]').should('have.text', 'About TheFairWork')
-    cy.get('[data-cy="AmalitechTeam"]')
-    cy.get('[data-cy="AmalitechServices"]')
-    cy.get('[data-cy="PrivacyPolicy"] > p')
-    cy.get('[data-cy="ContactUs"]')
+    cy.get('[data-cy="AmalitechTeam"]').should('have.text', 'Team')
+    cy.get('[data-cy="AmalitechServices"]').should('have.text', 'Services')
+    cy.get('[data-cy="PrivacyPolicy"] > p').should('have.text', 'Privacy Policy')
+    cy.get('[data-cy="ContactUs"]').should('have.text', 'Contact Us')
 
 })
 it('has social media links like Facebook and Linkedin', () => {
