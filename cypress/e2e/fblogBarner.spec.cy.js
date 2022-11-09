@@ -10,7 +10,6 @@ describe('explores the frewelance blog page', () => {
      })
 
   it('has blog articles containing images of the writer', () => {
-    //cy.visit('localhost:3000')
     cy.get('.container > :nth-child(1) > .mb-4').contains('Articles')
     cy.get('[src="/_next/image?url=%2Fimages%2FRectangle%209.png&w=1080&q=75"]').should('be.visible')
     cy.get('.container > .MuiGrid-container > :nth-child(1) > #cardMain > .MuiCardContent-root > :nth-child(2) > .normalTitle')
@@ -21,6 +20,8 @@ describe('explores the frewelance blog page', () => {
     cy.get("[data-cy='authorName']").should('be.visible')
     cy.get("[data-cy='styles.avatarprofilePicture']").should('be.visible')
     cy.get('.container > .MuiGrid-container > :nth-child(1) > #cardMain > .MuiCardContent-root > .MuiButtonBase-root > .MuiButton-label').should('have.text', 'READ MORE').should('be.visible').click()
+    cy.get('h2').should('be.visible')
+    cy.get('.ArticleDetails_image__d3PUU').should('be.visible')
   })
 
   it("has pagination including Previous and next", () => {
@@ -43,8 +44,8 @@ it('displays various links in the footer', () => {
     cy.get('[data-cy="forFreelancers"]').should('have.text', 'For Talent')
     cy.get('[data-cy="BecomeaFairworkerLink"]').should('have.text', 'Become A FairWorker')
     cy.get('[data-cy="AmalitechBigiskillT"]').should('have.text', 'AmaliTech Digital Skills Training')
-    cy.get('[data-cy="AmalitechCompany"]')
-    cy.get('[data-cy="AboutTheFairWork"]')
+    cy.get('[data-cy="AmalitechCompany"]').should('have.text', 'Company')
+    cy.get('[data-cy="AboutTheFairWork"]').should('have.text', 'About TheFairWork')
     cy.get('[data-cy="AmalitechTeam"]')
     cy.get('[data-cy="AmalitechServices"]')
     cy.get('[data-cy="PrivacyPolicy"] > p')
